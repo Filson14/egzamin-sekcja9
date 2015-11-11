@@ -1,23 +1,67 @@
-\chapter{Języki i~metody programowania}
+\chapter{Jezyki i~metody programowania}
 \PartialToc
 %\startcontents[chapters]
 %\printcontents[chapters]{}{1}{\section*{\contentsname}}
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}
-\textbf{W~jaki sposób można obliczyć długość tekstu przekazanego jako argument w~poniższej funkcji?}
-\begin{lstlisting}[language=sql]
-void foo(const char* txt) {
-. . .
-}
+\section{IT1A\_U05,IT1A\_U03}
+\textbf{Wskaż prawdziwe stwierdzenia~o poniższym fragmencie kodu XHTML 1.0 Strict}
+\begin{lstlisting}[language=html]
+	<p><a  href = http://www.agh.edu.pl><br></p>
 \end{lstlisting}
 
 \vspace{0.4cm}
-\noindent  Tutaj odpowiedzi w dowolnym formacie\\
-Powyżej fragment kodu\\
-A tak wstawiamy obrazki\\
-\begin{center}
-\includegraphics[width=6cm]{buka}
-\captionof{figure}{Buka}
-\end{center}
+\noindent
+\begin{enumerate}
+\item Wyrażenie  http://www.agh.edu.pl  powinno zostać ujęte~w cudzysłów.  
+\item   Znacznik br powinien byc oznaczony jako jednoczesny znacznik otwierajacy~i zamykający poprzez <br/>
+\item Brakuje nazwy hiperłącza (pomiędzy <a></a>).
+\item Brakuje znacznika zamykającego dla~a, tuż przed zamknięciem p.
+\end{enumerate}
 
 
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}dassdas
+\section{IT1A\_W10,IT1A\_W06, IT1A\_U05, IT1A\_U03, IT1A\_U10}
+\textbf{Która~z poniższych metod~w języku JavaScript zwraca element~o unikalnym identyfikatorze form?
+ }
+\begin{lstlisting}[language=html]
+	document.getElementById('form').
+\end{lstlisting}
+
+\section{1A\_W10,IT1A\_W06, IT1A\_U05, IT1A\_U03}
+\textbf{Co jest efektem działania poniższego programu~w języku PHP.}
+\begin{lstlisting}[language=php]
+	<?php
+	$wiek = array('ala'  => 12, 'ela' => 22, 'franek' => 54);
+	foreach ($wiek as $k =>$w)
+		echo $k.' '.$w."\n";
+	?>
+\end{lstlisting}
+\vspace{0.4cm}
+\noindent
+Tablice~w PHP działają jak mapy, mają pary kluczy wraz~z wartościami.~W związku~z tym zostanie wypisany następujący ciąg:
+
+ala  12
+
+ela  22
+
+franek  54
+\vspace{0.4cm}
+
+\textbf{Zaznacz prawdziwe stwierdzenia dotyczące poniższego kodu~w języku JavaScript}
+\begin{lstlisting}[language=html]
+		car = new Array();
+		car[0] = new Object();
+		car[0].make = 'Fiat';
+		car[0].vin = '123';
+		car[1] = new Object();
+		car[1].make = 'Ford';
+		car[1].vin = '456';
+		
+		for(idx in car){
+			for(prop in car [idx]){
+				document.write(car[idx][prop]);
+			}
+		}
+\end{lstlisting}
+
+\vspace{0.4cm}
+\noindent
+Pierwsza pętla operuje po obiektach,~a druga po ich wartościach.~W związku~z tym zostanie wypisane: Fiat123Ford456 (~w miejscu,~w którym został wstawiony kod).

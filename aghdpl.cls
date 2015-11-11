@@ -4,7 +4,7 @@
 %          
 % Author:  Marcin Szpyrka     (mszpyrka@agh.edu.pl)
 %          Grzegorz J. Nalepa (gjn@agh.edu.pl)
-%          AGH University of Science and Technology, Krak體, POLAND
+%          AGH University of Science and Technology, Krak贸w, POLAND
 % 
 % Modified by: Wojciech Kasperek 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -61,7 +61,7 @@
 %\def\thesistable{
 %\begin{tabular}{p{45mm}l}
 %Autorzy: & {\itshape \@author}\\[-1mm]
-%Kierunek studi體: & {\itshape \@degreeprogramme}\\[-1mm]
+%Kierunek studi贸w: & {\itshape \@degreeprogramme}\\[-1mm]
 %Przedmiot: & {\itshape \@subject}\\[-1mm]
 %Opiekun projektu: & {\itshape \@supervisor}\\
 %\end{tabular}
@@ -168,7 +168,7 @@
 \flushbottom
 
 %---------------------------------------------------------------------------
-% Ustawienia parametr體 dla tytu丑w rozdzia丑w, podrozdzia丑w, itd.
+% Ustawienia parametr贸w dla tytu鲁贸w rozdzia鲁贸w, podrozdzia鲁贸w, itd.
 %---------------------------------------------------------------------------
 
 \definecolor{halfgray}{gray}{0.50}
@@ -199,7 +199,7 @@
 %\titlespacing{\subsubsection}{7mm}{3mm}{1.5mm}
 
 %---------------------------------------------------------------------------
-% Ustawienia parametr體 generowania spisu tre禼i i spisu rysunk體
+% Ustawienia parametr贸w generowania spisu tre露ci i spisu rysunk贸w
 %---------------------------------------------------------------------------
 
 \renewcommand{\cfttoctitlefont}{\bfseries\Large}
