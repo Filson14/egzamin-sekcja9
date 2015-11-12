@@ -44,9 +44,7 @@ Powyższa definicja styli dotyczy elementu div, będącego bezpośrednim potomki
 Na przykład:
 \begin{lstlisting}[language=html]
 <div class="nav">
-	<div>
-		
-	</div>
+	<div id="stylowanyDiv"></div>
 </div>
 \end{lstlisting}
 
@@ -55,9 +53,7 @@ Tu stylowanie nie będzie miało miejsca:
 \begin{lstlisting}[language=html]
 <div class="nav">
 	<span>
-		<div>
-		
-		</div>
+		<div id="nieBedeStylowany"></div>
 	</span>
 </div>
 \end{lstlisting}
@@ -79,6 +75,10 @@ Tu stylowanie nie będzie miało miejsca:
 \item
 \textbf{border} - obramowanie elementu; solid - linia ciągła, red - czerwony kolor obranowania, 1px - grubość obramowania;
 \end{itemize}
+\begin{center}
+\includegraphics[width=6cm]{09/boxmodel}
+\captionof{figure}{Model pudełkowy elementów strony}
+\end{center}
 
 \textbf{!UWAGA!: }120px jest poprawne; 120 px już nie!
 
@@ -139,9 +139,13 @@ Funkcja \textit{flock} służy do zarządzania blokowaniem dostępu do pliku jak
 \textbf{LOCK\_EX} - dostęp do zapisu; wątek blokując plik w ten sposób ma go 'na wyłączność'. Inne wątki nie mogą go odczytać, a tym bardziej zapisać. Zapobiega wprowadzaniu zmian przez kilka wątków jednocześnie oraz odczytania niepełnych (przed edycją) danych.
 \item
 \textbf{LOCK\_UN} - zwolnienie blokady 
+\item
+\textbf{LOCK\_NB} - Gdy ustawiona, proces który natknął się na blokadę nie będzie czekał na swoją kolej. Używa się tej opcji w połączeniu, z którąś opcją blokady np. \textit{flock(\$fp, LOCK\_EX | LOCK\_NB)}. Użyta w naszym przypadku pozwoliła by na przejście bo bloku \textit{else} gdy plik jest już zablokowany, zamiast czekać na zwolnienie.\textbf{LOCK\_UN}
 \end{itemize}
 \textit{flock} zwraca true w przypadku sukcesu i false w przeciwnym razie.
 Gdy \textit{flock} nie może uzyskać do zasobu, oczekuje na zwolnienie blokady przez inny wątek!
+
+Funkcja \textit{flock} może przyjmować także opcjonalnie trzeci parametr. Jego wartość jest ustawiana jako 1, gdy proces zostanie zablokowany (nie uzyska dostępu do pliku). Głównie służy do sprawdzenia czy coś złego się nie wydarzyło - gdy funkcja zwraca \textbf{false}, a trzeci parametr ma wartość 0, oznacza to że wystąpił jakiś błąd, ponieważ \textit{flock} nie mógł uzyskać blokady, a jednak proces nie został wstrzymany przez już istniejącą blokadę na pliku.
 \end{enumerate}
 
 
