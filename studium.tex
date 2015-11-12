@@ -15,6 +15,9 @@
 \usepackage{varwidth}
 \usepackage{titletoc}
 \usepackage{hyperref}
+\usepackage{framed}
+\usepackage{ifthen}
+\usepackage{titlesec}
 
 \hypersetup{
     colorlinks,
@@ -50,22 +53,67 @@
 
 \faculty{}
 
+\titleformat*{\section}{\Large\bfseries}
+
 \newcommand{\PartialToc}{
 \startcontents[chapters]\vspace{-1cm}\vbox{\bf\large Spis treści}
 \printcontents[chapters]{}{1}{}
 \newpage
 }
+
+
+% HOWTO
+%\answer{Pytanie}{Przykladowa_odpowiedz}{Przykladowa_odpowiedz_czy_prawdziwa}{Poprawna_odpowiedz}{Wyjasnienie}
+%
+\newcommand{\answer}[5]{
+\section{#1}
+%\textbf{#2}
+
+% \vspace{0.4cm}
+\noindent
+{\textbf{Przykładowa odpowiedź:}}
+#2
+\ifthenelse
+    {\equal{#3}{T}}
+    {\textbf{PRAWDA}}
+    {\ifthenelse
+        {\equal{#3}{F}}
+        {\textbf{FAŁSZ}}
+        {\textbf{DIY}}
+    }
+%BRAK można zastąpić czymś innym - generalnie chodziło o to, że trzeba jakoś rozróżnić to, że ktoś napisał F i to, że ktoś niczego nie napisał
+% polecam wpisac tam "DIY" :)
+% albo TODO ;)
+
+\vspace{0.4cm}
+\noindent
+\textbf{Odpowiedź:}
+#4
+
+\ifthenelse{\equal{#5}{}}{}{
+    %\begin{framed}{Wyjaśnienie}%
+    %\addtolength\textwidth{20pt}\par\noindent\hspace*{-10pt}\rule{\textwidth}{.4pt}
+    %#3
+    %\end{framed}
+    % \subsection*{Wyjaśnienie:}
+    % #3
+    
+    %albo
+    %\begin{center}\textbf{Wyjaśnienie}\end{center}
+    %#3
+    \vspace{0.4cm}
+    \noindent
+    \textbf{Wyjaśnienie:} #5
+}
+
+}
+
+
 %---------------------------------------------------------------------------
 
+\includeonly{09/chapter.tex}
+
 \setcounter{tocdepth}{0}
-
-%-------------------------
-%-------------------------
-%--KOMPILUJ TYLKO SWÓJ ROZDZIAŁ Z UŻYCIEM TEGO
-\includeonly{09/chapter}
-%------
-
-
 \begin{document}
 
 \titlepages
@@ -73,26 +121,7 @@
 \clearpage
 \setcounter{tocdepth}{1}
 
-\include{01/chapter}
-\include{02/chapter}
-\include{03/chapter}
-\include{04/chapter}
-\include{05/chapter}
-\include{06/chapter}
-\include{07/chapter}
-\include{08/chapter}
-\include{09/chapter}
-\include{10/chapter}
-\include{11/chapter}
-\include{12/chapter}
-\include{13/chapter}
-\include{14/chapter}
-\include{15/chapter}
-\include{16/chapter}
-\include{17/chapter}
-\include{18/chapter}
-\include{19/chapter}
-\include{20/chapter}
+\input{09/chapter.tex}
 
 
 \end{document}
