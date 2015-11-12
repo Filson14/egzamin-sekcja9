@@ -56,7 +56,54 @@
 \newpage
 }
 %---------------------------------------------------------------------------
+% HOWTO
+%\answer{Pytanie}{Przykladowa_odpowiedz}{Przykladowa_odpowiedz_czy_prawdziwa}{Poprawna_odpowiedz}{Wyjasnienie}
+%
+\newcommand{\answer}[5]{
+\section{#1}
+%\textbf{#2}
 
+% \vspace{0.4cm}
+\noindent
+{\textbf{Przykładowa odpowiedź:}}
+#2
+\ifthenelse
+    {\equal{#3}{T}}
+    {\textbf{PRAWDA}}
+    {\ifthenelse
+        {\equal{#3}{F}}
+        {\textbf{FAŁSZ}}
+        {\textbf{DIY}}
+    }
+%BRAK można zastąpić czymś innym - generalnie chodziło o to, że trzeba jakoś rozróżnić to, że ktoś napisał F i to, że ktoś niczego nie napisał
+% polecam wpisac tam "DIY" :)
+% albo TODO ;)
+
+\vspace{0.4cm}
+\noindent
+\textbf{Odpowiedź:}
+#4
+
+\ifthenelse{\equal{#5}{}}{}{
+    %\begin{framed}{Wyjaśnienie}%
+    %\addtolength\textwidth{20pt}\par\noindent\hspace*{-10pt}\rule{\textwidth}{.4pt}
+    %#3
+    %\end{framed}
+    % \subsection*{Wyjaśnienie:}
+    % #3
+    
+    %albo
+    %\begin{center}\textbf{Wyjaśnienie}\end{center}
+    %#3
+    \vspace{0.4cm}
+    \noindent
+    \textbf{Wyjaśnienie:} #5
+}
+
+}
+
+
+%---------------------------------------------------------------------------
 \setcounter{tocdepth}{0}
 
 %-------------------------
