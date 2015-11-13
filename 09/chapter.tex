@@ -1,23 +1,151 @@
-\chapter{Języki i~metody programowania}
+\chapter{Jezyki i~metody programowania}
 \PartialToc
 %\startcontents[chapters]
 %\printcontents[chapters]{}{1}{\section*{\contentsname}}
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}
-\textbf{W~jaki sposób można obliczyć długość tekstu przekazanego jako argument w~poniższej funkcji?}
-\begin{lstlisting}[language=sql]
-void foo(const char* txt) {
-. . .
-}
-\end{lstlisting}
-
+\section{IT1A\_W10,IT1A\_U10}
+\textbf{Serwery DNS oferują:}
 \vspace{0.4cm}
-\noindent  Tutaj odpowiedzi w dowolnym formacie\\
-Powyżej fragment kodu\\
-A tak wstawiamy obrazki\\
-\begin{center}
-\includegraphics[width=6cm]{buka}
-\captionof{figure}{Buka}
-\end{center}
+\noindent
+\begin{enumerate}
+\item Translację nazwy kanonicznej $\rightarrow$ IP
+\item Translację odwrotną (Reverse Lookup): IP $\rightarrow$ nazwa
+\end{enumerate}
+\vspace{0.4cm}
+Najważniejsze typy rekordów DNS oraz ich znaczenie:
+\begin{description}
+
+\item[A] adres hosta (ipV4) 
+\item[AAAA]  adres hosta (ipV6) 
+\item[PTR]  	
+	rekord wskaźnika - mapuje adres IPv4 lub IPv6 na nazwę kanoniczną hosta. 		Określenie rekordu PTR dla nazwy hosta (ang. hostname) w domenie in-addr.arpa 	(IPv4), bądź ip6.arpa (IPv6), który odpowiada adresowi IP, pozwala na 			implementację odwrotnej translacji adresów DNS (ang. reverse DNS lookup) 
+\item[MX] mapuje nazwę domeny DNS na nazwę serwera poczty oraz jego priorytet 
+\item[CNAME]	alias nazwy domeny. Wszystkie wpisy DNS oraz poddomeny są 	poprawne także dla aliasu 
+\item[TXT]	rekord ten pozwala dołączyć dowolny tekst do rekordu DNS 
+\item[NS] Name Server, serwer nazw dla danej strefy 
+\item[SOA]    rekord adresu startowego uwierzytelnienia (ang. start of authority record) ustala serwer DNS dostarczający autorytatywne informacje o domenie internetowej 
+\end{description}
+
+Narzędzia do odpytywania DSN: host, dig
 
 
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}dassdas
+\section{IT1A\_W10,IT1A\_U10}
+\textbf{Zaznacz prawdziwe stwierdzenie. Protokół HTTP w  wersji 1.1}
+\vspace{0.4cm}
+\noindent
+
+Podobnie jak większość protokołów sieciowych, HTTP uzywa modelu klient-serwer: klient HTTP otwiera połączenie i wysyła komunikat żądania do serwera HTTP. Serwer następnie zwraca komunikat odpowiedzi, zwykle zawierający zasób, o który został poproszony.
+Portem zarezerwowanym dla HTTP jest 80 port TCP oraz rzadziej używane porty 8008 i 8080.\\
+
+\textsc{\textbf{Struktura protokołu HTTP}}
+
+\begin{enumerate}
+\item Żądanie
+	\begin{enumerate}
+	\item{polecenie}
+	\item{nagłówki (0 lub więcej)}
+	\item pusta linia
+	\item dane
+	\end{enumerate}
+\item Odpowiedź
+	\begin{enumerate}
+		\item pojedyncza linia statusu: \textit{protokół kod opis}
+		\item{nagłówki (0 lub więcej)}
+		\item pusta linia
+		\item dane
+	\end{enumerate}
+\end{enumerate}
+
+
+\textsc{\textbf{Kody statusu}}
+
+\begin{description}
+\item[1xx] powiadomienie
+\item[2xx] powodzenie – 200 OK
+\item[3xx] przekierowanie do innego URI – 301 Moved Permanently
+\item[4xx] błąd po stronie klienta – 404 Not Found
+\item[5xx] błąd po stronie serwera – 500 Server Error
+\end{description}
+
+\textsc{\textbf{metody http}}
+\begin{description}
+
+\item[OPTIONS] — pozwala klientowi ustalić opcje i/lub wymagania związane z danym zasobem, albo możliwości danego serwera, nie implikując działań zasobu i nie inicjując pobierania zasobu.
+\item[GET] — pobiera informacje zidentyfikowane przez URI, do którego zostało zgłoszone żądanie. Jeżeli URI zidentyfikuje proces wytwarzający dane, to wytworzone dane zostaną zwrócone jako jednostka.
+
+\item[HEAD] — identyczny z GET, z tym że serwer nie zwraca w odpowiedzi treści komunikatu. Metoda ta uzyskuje informacje dotyczące jednostki nie przesyłając samej treści jednostki i jest wykorzystywana do testowania ważności, dostępności oraz niedawnych modyfikacji łączy hipertekstowych.
+
+\item[POST] — żąda, aby serwery przyjmowały jednostkę załączoną w żądaniu,  POST jest wykorzystywany do przypisywania zasobów, do wysyłania komunikatów, do przedkładania danych formularzy, itp.
+
+\item[PUT] — żąda, aby jednostka załączona w żądaniu została zapamiętana pod URI, do którego zostało zgłoszone żądanie. Jeżeli dany zasób wspomniany w URI już istnieje, to przesyłaną jednostkę uznaje się za wersję zmodyfikowaną. Jeżeli URI nie wskazuje na istniejący zasób, a żądający użytkownik może zdefiniować URI jako nowy zasób, to zasób jest tworzony na serwerze.
+
+\item[DELETE] — żąda, aby serwer usunął zasób zidentyfikowany przez URI.
+
+\item[TRACE] — wywołuje zdalną pętlę zwrotną komunikatu żądania. Ostateczny odbiorca żądania odbija otrzymany komunikat z powrotem do klienta. TRACE pozwala klientowi zobaczyć co jest odbierane na drugim końcu łańcucha żądania. Informacja ta może być wykorzystywana do testowania, lub znajdywania uszkodzeń.
+
+\item[CONNECT] — nazwa metody zarezerwowana do wykorzystywania wraz z proxy, który może dynamicznie przełączyć się na pełnienie funkcji tunelu, przy użyciu, na przykład, tunelowania z wykorzystaniem warstwy zabezpieczeń łączy (SSL). Proxy to program pośredniczący, pełniący zarówno funkcję serwera, jak i klienta, w celu zgłaszania żądań w imieniu innych klientów.
+\end{description}
+
+\textsc{\textbf{nagłówki}}\\
+Z wykładu:
+\begin{description}
+
+\item[Klient:] \hfill \\
+	\begin{description}
+	\item[From]: – zwykle email
+	\item[User-Agent:] – identyfikacja klienta: Nazwa/Wersja Host: – HTTP 1.1
+	\end{description}
+\item[Serwer:] \hfill \\
+	\begin{description}
+		\item[Server:] - analogicznie jak User-Agent
+		\item[Last-Modified:] – Data i godzina modyfikacji zasobu 
+		\item[Connetion:] – rodzaj połączenia (close dla HTTP 1.0)
+		\item[Content-Type:] – tym MIME, np. text/html, application/octet-stream
+		\item[Content-Length:] – rozmiar w bajtach
+	\end{description}
+\end{description}
+\href{http://www.wikiwand.com/pl/Lista_nag%C5%82%C3%B3wk%C3%B3w_HTTP}{Wincyj nagłówków: wiki} 
+\\
+
+
+\textsc{\textbf{wybrane różnice między wersją HTTP 1.0 i 1.1}}
+\begin{enumerate}
+\item{\textbf{ w 1.1 może być więcej niż 1 request}\\
+Nagłówek Keep-Alive jest rozszerzeniem HTTP/1.0. \\
+W HTTP/1.1 ten nagłówek nie jest potrzebny, gdyż połączenia Keep-Alive są domyślne (zachowanie zmienia Connection: close)}
+\item{\textbf{w  1.1 w zapytaniu można określić hosta docelowego}\\
+GET / HTTP/1.1 \\
+Host: kis.agh.edu.pl}
+\item{\textbf{nowa wersja wprowadza nagłówki If-Unmodified-Since, If-Match, If-None-Match}}
+
+\end{enumerate}
+
+
+
+
+
+
+\section{IT1A\_W10,IT1A\_U10}
+\textbf{Do bezpośredniej komunikacji z serwerem WWW służą następujące narzędzia}
+\vspace{0.4cm}
+\noindent
+ \begin{enumerate}
+ \item{nc (netcat)} 
+ \item{każdy klient protokołu zdalnego logowania (ssh, telnet) ?}
+ \end{enumerate}
+ 
+ \section{IT1A\_U05,IT1A\_U03}
+ \textbf{Dany jest poniższy fragment kodu XHTML 1.0 Strict}
+\vspace{0.4cm}
+\noindent
+\begin{lstlisting}[language=html]
+	<img src="http://www.agh.edu.pl/i.jpg" 
+			width ="320"
+			height ="240" 
+			alt="logo AGH" />
+\end{lstlisting}
+\textbf{Obrazek \textit{i.jpg} ma rozmiary 1024x768. Zaznacz prawdziwe stwierdzenia}
+\\\\
+Obrazek zostanie przeskalowany do podanych rozmiarów, zniekształcając go jeśli proporcje nowych wymiarów nie są takie same. \\
+Domyślą jdenostką artybutów \textit{width} i \textit{height} są piksele. Można też podać wartość \%, odnosi się ona wtedy do ilości wolnego miejsca jakim dysponuje element.\\
+Jeśli podane są wartości \textit{width} i \textit{height} , przeglądarka rezerwuje odpowiednie miejsce podczas layout'owania (po załadowaniu obrazka strona się nie przesunie).\\
+W miejscu niezaładowanego obrazka będzie tekst podany pod atrybutem \textit{alt}
