@@ -1,23 +1,89 @@
-\chapter{Języki i~metody programowania}
+\chapter{Języki i technologie webowe}
 \PartialToc
 %\startcontents[chapters]
 %\printcontents[chapters]{}{1}{\section*{\contentsname}}
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}
-\textbf{W~jaki sposób można obliczyć długość tekstu przekazanego jako argument w~poniższej funkcji?}
-\begin{lstlisting}[language=sql]
-void foo(const char* txt) {
-. . .
-}
-\end{lstlisting}
+\section{IT1A\_W10,IT1A\_U10}
+\textbf{Droga pakietu w sieci Internet pomiędzy dwoma
+węzłami, tj. lista adresów węzłów odwiedzanych przez pakiet}
+
+Droga takiego pakietu zależy od stanu tablic routingu. Jeżeli stosowany jest routing dynamiczny wtedy pierwsza próba wysłania pakietu się nie powiedzie - router nie zna adresu mac celu i musi go odnaleźć w związku z czym porzuca pakiet, natomiast jeśli w tablicy routingu znajduje się już adres mac węzła docelowego pakiet pójdzie dalej. Całość oczywiście zależy od stopnia skomplikowania sieci (np. ilość routerów po drodze).
+\\
+\\
+Ścieżka pakietu w prostej sieci jest bardzo fajnie i obrazowo opisana tutaj:\\
+http://jaredheinrichs.com/tracing-packet-flow-between-a-2-switches-and-a-router.html
+
 
 \vspace{0.4cm}
-\noindent  Tutaj odpowiedzi w dowolnym formacie\\
-Powyżej fragment kodu\\
-A tak wstawiamy obrazki\\
-\begin{center}
-\includegraphics[width=6cm]{buka}
-\captionof{figure}{Buka}
-\end{center}
+\noindent 
 
 
-\section{IT1A\_W03,IT1A\_U03,IT1A\_U07}dassdas
+\section{IT1A\_W10,IT1A\_W06, IT1A\_U05, IT1A\_U03, IT1A\_U10 }
+\textbf{Jak długi będzie czas wykonania poniższego programu napisanego w języku PHP? Zakłada się, że program uruchamiany jest jako aplikacja WWW tj. dostępny jest pod określonym adresem URI, a interpreter PHP uruchamiany jest przez serwer WWW.}
+
+\begin{lstlisting}[language=php]
+1 <? php
+2 echo 'start';
+3 sleep(6);
+4 ?>
+
+\end{lstlisting}
+
+Wywołanie \textbf{sleep(6)} powoduje "uśpienie" programu na 6 sekund. Do tego czasu należy doliczyć także czas wykonania instrukcji \textbf{echo 'start'}, więc ogólny czas wykonania programu będzie większy niż 6 sekund. Sprawdzone za pomocą funkcji \textbf{microtime()}.
+
+\vspace{0.4cm}
+\noindent
+
+
+\section{IT1A\_W10,IT1A\_W06, IT1A\_U05, IT1A\_U03}
+\textbf{Zaznacz prawdziwe stwierdzenia dotyczące poniższego kodu w języku JavaScript.}
+
+
+\begin{lstlisting}
+function updateAjax() {
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("stime").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "date.php", true);
+    xmlhttp.send();
+    window.setTimeout("updateAjax()", 1000);
+}
+window.setTimeout("updateTime(); updateAjax();", 5000);
+\end{lstlisting}
+
+\begin{itemize}
+\item{Event \textbf{XMLHttpRequest.onreadystatechange} jest triggerowany za każdym razem, gdy
+\textbf{XMLHttpRequest.readyState} się zmienia}
+
+\item{\textbf{XMLHttpRequest.readyState == 4} oznacza, że wysłany przez nas request został zakończony.}
+
+\item{\textbf{XMLHttpRequest.status == 200 } (HTTP status 200) oznacza, że nasz request został przetworzony poprawnie}
+
+\item{\textbf{XMLHttpRequest.responseText} jest odpowiedzią serwera na nasz request. W przypadku powyższego kodu elementowi \textbf{na naszej stronie} o id == 'stime' zostanie przypisana odpowiedź serwera.} 
+
+\item{Funkcja \textbf{XMLHttpRequest.open(method,url,async)} określa typ requestu jaki zostanie wysłany. }
+
+\item{\textbf{window.setTimeout(function, milliseconds)} powoduje pojedyncze uruchomienie funkcji (jak widać w powyższym kodzie może ich być kilka) określonej przez parametr \textbf{function} po odczekaniu czasu określonego przez parametr \textbf{miliseconds}.}
+
+\end{itemize}
+Komunikacja AJAX rozpocznie się po 5 sekundach od zinterpretowania kodu. Następnie funkcja \textbf{updateAjax()} będzie wywoływana co jedną sekundę (sama ustawia sobie timeout).
+
+
+\vspace{0.4cm}
+\noindent
+
+\section{IT1A\_W05, IT1A\_U05}
+\textbf{Dany jest dokument XML oraz odpowiednie DTD. Zaznacz prawdziwe stwierdzenia.}\\
+
+\textbf{DTD} -  rodzaj dokumentu definiujący formalną strukturę dokumentów XML, HTML, XHTML lub innych
+ pochodzących z rodziny SGML lub XML. Definicje DTD mogą być zawarte w pliku dokumentu, którego strukturę definiują, przeważnie jednak zapisane są w osobnym pliku tekstowym, co pozwala na zastosowanie tego samego DTD dla wielu dokumentów.\\
+
+\textbf{XMLSchema} - opracowany przez W3C standard służący do definiowania struktury dokumentu XML. XML Schema stanowi alternatywę dla DTD, przy czym posiada znacznie większe możliwości. XML Schema jest strukturą XML, w odróżnieniu od DTD nie będącego częścią standardu XML. Dokumenty zawierające definicje XML Schema zapisuje się zwykle w plikach z rozszerzeniem .xsd (od XML Schema Definition).
+\\
+\\
+\textbf{Funkcjonalność DTD może zostać zastąpiona przez XMLSchema. Należy jednak pamiętać, że składnia XMLSchema sama w sobie jest zazwyczaj definiowana przez DTD.}\\
+\\
+Dokładniejszy opis różnic pomiędzy DTD a XMLSchema oraz ich składnię można podejrzeć tutaj:\\
+http://www.sitepoint.com/xml-dtds-xml-schema/
